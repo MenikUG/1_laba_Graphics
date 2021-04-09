@@ -13,14 +13,14 @@ namespace _1_laba_Graphics
         PointF point1, point2, point3, point4, point5, point6, point7, point8;
         public Polygon(Color color)
         {
-            point1 = new PointF(100.0F, 100.0F);
-            point2 = new PointF(230.0F, 60.0F);
-            point3 = new PointF(300.0F, 170.0F);
-            point4 = new PointF(350.0F, 150.0F);
-            point5 = new PointF(430.0F, 200.0F);
-            point6 = new PointF(450.0F, 100.0F);
-            point7 = new PointF(500.0F, 300.0F);
-            point8 = new PointF(230.0F, 330.0F);
+            point1 = new PointF(0.0F, 0.0F);
+            point2 = new PointF(100.0F, 25.0F);
+            point3 = new PointF(200.0F, 5.0F);
+            point4 = new PointF(250.0F, 50.0F);
+            point5 = new PointF(300.0F, 100.0F);
+            point6 = new PointF(350.0F, 200.0F);
+            point7 = new PointF(200.0F, 200.0F);
+            point8 = new PointF(130.0F, 230.0F);
             this.color = color;
         }
 

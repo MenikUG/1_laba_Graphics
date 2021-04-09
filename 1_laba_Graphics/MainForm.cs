@@ -22,6 +22,7 @@ namespace _1_laba_Graphics
 		Color color = Color.Red;
 		List<Point> points = new List<Point>();
 		List<Shape> storage = new List<Shape>();
+		Bitmap bitmap1;
 		private void panel_drawing_Paint(object sender, PaintEventArgs e)
 		{	// Для отрисовки на панели
 			Graphics graphic = e.Graphics;
@@ -102,8 +103,42 @@ namespace _1_laba_Graphics
 				case 6:
 					storage.Add(new Polygon(color));
 					break;
+				case 7:
+					if (count_click == 7)
+					{
+						points.Add(new Point(e.X, e.Y));
+						storage.Add(new PolygonV2(points, color));
+						panel_drawing.Refresh();
+						points.Clear();
+						count_click = 0;
+					}
+					else
+					{
+						points.Add(new Point(e.X, e.Y));
+						count_click++;
+					}
+					break;
+				case 8:
+					storage.Add(new Gradient(color));
+					break;
+				case 9:
+					storage.Add(new GradientV2());
+					break;
+				case 10:
+					storage.Add(new TextuteKist(e.X-30, e.Y-30));
+					break;
+				case 11:
+					storage.Add(new SubShape(e.X - 50, e.Y - 50, color));
+					break;
 			}
 			panel_drawing.Refresh();
+		}
+		private void btn_select_color_Click(object sender, EventArgs e)
+		{
+			if (colorDialog1.ShowDialog() == DialogResult.Cancel)
+				return;
+			btn_select_color.BackColor = colorDialog1.Color;
+			color = colorDialog1.Color;
 		}
 		private void Line_Button_Click(object sender, EventArgs e)
 		{   // Выбор линий
@@ -137,5 +172,107 @@ namespace _1_laba_Graphics
         {
 			mode = 6;
         }
+        private void PolygonV2_Button_Click(object sender, EventArgs e)
+        {
+			mode = 7;
+			count_click = 0;
+        }
+        private void Gradient_Button_Click(object sender, EventArgs e)
+        {
+			mode = 8;
+        }
+        private void GradientV2_Button_Click(object sender, EventArgs e)
+        {
+			mode = 9;
+        }
+        private void TextureKist_Button_Click(object sender, EventArgs e)
+        {
+			mode = 10;
+        }
+        private void SubShape_Button_Click(object sender, EventArgs e)
+        {
+			mode = 11;
+        }
+        private void Selectphoto_Button_Click(object sender, EventArgs e)
+        {	// Выбираем путь к изображению
+			if (openPicture.ShowDialog() == DialogResult.Cancel)
+				return;
+			pictureBox1.ImageLocation = openPicture.FileName;
+			bitmap1 = (Bitmap)Bitmap.FromFile(openPicture.FileName);
+			pictureBox1.Visible = true;
+		}
+        private void Flip_btn_Click(object sender, EventArgs e)
+        {
+			if (!flip_90l.Visible)
+			{
+				flip_90l.Visible = true;
+				flip_90r.Visible = true;
+			}
+			else
+            {
+				flip_90l.Visible = false;
+				flip_90r.Visible = false;
+			}
+        }
+
+        private void flip_90l_Click(object sender, EventArgs e)
+		{   // Поворачивает выбранное изображение на 90° влево
+			bitmap1.RotateFlip(RotateFlipType.Rotate90FlipXY);
+			pictureBox1.Image = bitmap1;
+			pictureBox1.Refresh();
+		}
+
+        private void flip_90r_Click(object sender, EventArgs e)
+        {	// Поворачивает выбранное изображение на 90° вправо
+			bitmap1.RotateFlip(RotateFlipType.Rotate90FlipNone);
+			pictureBox1.Image = bitmap1;
+			pictureBox1.Refresh();
+		}
+
+        private void Scale_Button_Click(object sender, EventArgs e)
+        {
+			if(!trackBar2.Visible)
+				trackBar2.Visible = true;
+			else
+				trackBar2.Visible = false;
+		}
+
+        private void trackBar2_Scroll(object sender, EventArgs e)
+        {
+			int Width = Convert.ToInt32(bitmap1.Width / (trackBar2.Value * 0.1));
+			int Height = Convert.ToInt32(bitmap1.Height / (trackBar2.Value * 0.1));
+			Bitmap temp = new Bitmap(bitmap1, new Size(Width, Height));
+			pictureBox1.Image = temp;
+			pictureBox1.Refresh();
+		}
+
+        private void Inver_Button_Click(object sender, EventArgs e)
+        {
+			int x;
+			int y;
+			for (x = 0; x < bitmap1.Width; x++)
+			{
+				for (y = 0; y < bitmap1.Height; y++)
+				{
+					Color oldColor = bitmap1.GetPixel(x, y);
+					Color newColor;
+					newColor = Color.FromArgb(oldColor.A, 255 - oldColor.R, 255 - oldColor.G, 255 - oldColor.B);
+					bitmap1.SetPixel(x, y, newColor);
+					pictureBox1.Image = bitmap1;
+					pictureBox1.Refresh();
+				}
+			}
+		}
+
+        private void Clear_Button_Click(object sender, EventArgs e)
+        {
+			storage.Clear();
+			panel_drawing.Refresh();
+			pictureBox1.Visible = false;
+			flip_90l.Visible = false;
+			flip_90r.Visible = false;
+			trackBar2.Visible = false;
+
+		}
     }
 }
