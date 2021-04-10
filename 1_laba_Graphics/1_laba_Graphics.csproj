@@ -47,10 +47,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Bezier.cs" />
+    <Compile Include="Complement.cs" />
     <Compile Include="Diagram.cs" />
     <Compile Include="Ellipse.cs" />
+    <Compile Include="Exclude.cs" />
     <Compile Include="Gradient.cs" />
+    <Compile Include="GradientAlongThePath.cs" />
     <Compile Include="GradientV2.cs" />
+    <Compile Include="Interpolation.cs" />
     <Compile Include="Line.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>

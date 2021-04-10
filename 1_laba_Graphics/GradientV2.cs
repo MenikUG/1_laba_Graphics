@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
+﻿using System.Drawing;
 using System.Drawing.Drawing2D;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace _1_laba_Graphics
 {
@@ -32,9 +27,7 @@ namespace _1_laba_Graphics
                 Color.FromArgb(255, 0, 0, 255),
                 Color.FromArgb(255, 0, 0, 0) };
             myBrush.SurroundColors = colors;
-            // Центр будет белым
             myBrush.CenterColor = Color.White;
-            // Используем градиентную кисть для заливки прямоугольника
             graphic.FillRectangle(myBrush, new Rectangle(100, 100, 500, 500));
         }
     }

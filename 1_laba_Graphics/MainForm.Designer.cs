@@ -30,6 +30,12 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.panel_drawing = new System.Windows.Forms.Panel();
+            this.trackBar_Y = new System.Windows.Forms.TrackBar();
+            this.trackBar_X = new System.Windows.Forms.TrackBar();
+            this.trackBar2 = new System.Windows.Forms.TrackBar();
+            this.flip_90r = new System.Windows.Forms.Button();
+            this.flip_90l = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.trackBar1 = new System.Windows.Forms.TrackBar();
             this.menu = new System.Windows.Forms.ToolStrip();
             this.toolStripDropDownButton1 = new System.Windows.Forms.ToolStripDropDownButton();
@@ -43,25 +49,28 @@
             this.Gradient_Button = new System.Windows.Forms.ToolStripMenuItem();
             this.GradientV2_Button = new System.Windows.Forms.ToolStripMenuItem();
             this.TextureKist_Button = new System.Windows.Forms.ToolStripMenuItem();
-            this.btn_select_color = new System.Windows.Forms.Button();
-            this.colorDialog1 = new System.Windows.Forms.ColorDialog();
             this.SubShape_Button = new System.Windows.Forms.ToolStripMenuItem();
-            this.openPicture = new System.Windows.Forms.OpenFileDialog();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.FlipBezier_Button = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripDropDownButton2 = new System.Windows.Forms.ToolStripDropDownButton();
             this.Selectphoto_Button = new System.Windows.Forms.ToolStripMenuItem();
             this.Flip_btn = new System.Windows.Forms.ToolStripMenuItem();
-            this.flip_90l = new System.Windows.Forms.Button();
-            this.flip_90r = new System.Windows.Forms.Button();
             this.Scale_Button = new System.Windows.Forms.ToolStripMenuItem();
             this.Inver_Button = new System.Windows.Forms.ToolStripMenuItem();
-            this.trackBar2 = new System.Windows.Forms.TrackBar();
+            this.btn_select_color = new System.Windows.Forms.Button();
+            this.colorDialog1 = new System.Windows.Forms.ColorDialog();
+            this.openPicture = new System.Windows.Forms.OpenFileDialog();
             this.Clear_Button = new System.Windows.Forms.Button();
+            this.GradientAlongThePath_Button = new System.Windows.Forms.ToolStripMenuItem();
+            this.Interpolation_Button = new System.Windows.Forms.ToolStripMenuItem();
+            this.Complement_Button = new System.Windows.Forms.ToolStripMenuItem();
+            this.Exclude_Button = new System.Windows.Forms.ToolStripMenuItem();
             this.panel_drawing.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar_Y)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar_X)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
             this.menu.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar2)).BeginInit();
             this.SuspendLayout();
             // 
             // panel_drawing
@@ -71,6 +80,8 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel_drawing.BackColor = System.Drawing.SystemColors.Info;
             this.panel_drawing.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel_drawing.Controls.Add(this.trackBar_Y);
+            this.panel_drawing.Controls.Add(this.trackBar_X);
             this.panel_drawing.Controls.Add(this.trackBar2);
             this.panel_drawing.Controls.Add(this.flip_90r);
             this.panel_drawing.Controls.Add(this.flip_90l);
@@ -84,10 +95,94 @@
             this.panel_drawing.MouseClick += new System.Windows.Forms.MouseEventHandler(this.panel_drawing_MouseClick);
             this.panel_drawing.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panel_drawing_MouseMove);
             // 
+            // trackBar_Y
+            // 
+            this.trackBar_Y.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.trackBar_Y.Location = new System.Drawing.Point(364, 549);
+            this.trackBar_Y.Maximum = 100;
+            this.trackBar_Y.Minimum = -100;
+            this.trackBar_Y.Name = "trackBar_Y";
+            this.trackBar_Y.Size = new System.Drawing.Size(214, 56);
+            this.trackBar_Y.TabIndex = 9;
+            this.trackBar_Y.Visible = false;
+            this.trackBar_Y.Scroll += new System.EventHandler(this.trackBar_Y_Scroll);
+            // 
+            // trackBar_X
+            // 
+            this.trackBar_X.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.trackBar_X.Location = new System.Drawing.Point(124, 549);
+            this.trackBar_X.Maximum = 200;
+            this.trackBar_X.Minimum = -200;
+            this.trackBar_X.Name = "trackBar_X";
+            this.trackBar_X.Size = new System.Drawing.Size(214, 56);
+            this.trackBar_X.TabIndex = 8;
+            this.trackBar_X.Visible = false;
+            this.trackBar_X.Scroll += new System.EventHandler(this.trackBar_X_Scroll);
+            // 
+            // trackBar2
+            // 
+            this.trackBar2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.trackBar2.Location = new System.Drawing.Point(928, 255);
+            this.trackBar2.Maximum = 50;
+            this.trackBar2.Minimum = 2;
+            this.trackBar2.Name = "trackBar2";
+            this.trackBar2.Orientation = System.Windows.Forms.Orientation.Vertical;
+            this.trackBar2.Size = new System.Drawing.Size(56, 175);
+            this.trackBar2.TabIndex = 7;
+            this.trackBar2.Value = 10;
+            this.trackBar2.Visible = false;
+            this.trackBar2.Scroll += new System.EventHandler(this.trackBar2_Scroll);
+            // 
+            // flip_90r
+            // 
+            this.flip_90r.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.flip_90r.Image = ((System.Drawing.Image)(resources.GetObject("flip_90r.Image")));
+            this.flip_90r.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.flip_90r.Location = new System.Drawing.Point(810, 570);
+            this.flip_90r.Name = "flip_90r";
+            this.flip_90r.Size = new System.Drawing.Size(178, 39);
+            this.flip_90r.TabIndex = 6;
+            this.flip_90r.Text = "Поворот на 90°";
+            this.flip_90r.UseVisualStyleBackColor = true;
+            this.flip_90r.Visible = false;
+            this.flip_90r.Click += new System.EventHandler(this.flip_90r_Click);
+            // 
+            // flip_90l
+            // 
+            this.flip_90l.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.flip_90l.Image = ((System.Drawing.Image)(resources.GetObject("flip_90l.Image")));
+            this.flip_90l.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.flip_90l.Location = new System.Drawing.Point(631, 570);
+            this.flip_90l.Name = "flip_90l";
+            this.flip_90l.Size = new System.Drawing.Size(169, 39);
+            this.flip_90l.TabIndex = 5;
+            this.flip_90l.Text = "Поворот на 90°";
+            this.flip_90l.UseVisualStyleBackColor = true;
+            this.flip_90l.Visible = false;
+            this.flip_90l.Click += new System.EventHandler(this.flip_90l_Click);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBox1.Location = new System.Drawing.Point(4, 4);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(980, 601);
+            this.pictureBox1.TabIndex = 1;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.Visible = false;
+            // 
             // trackBar1
             // 
+            this.trackBar1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.trackBar1.Location = new System.Drawing.Point(928, 3);
             this.trackBar1.Maximum = 360;
+            this.trackBar1.Minimum = -360;
             this.trackBar1.Name = "trackBar1";
             this.trackBar1.Orientation = System.Windows.Forms.Orientation.Vertical;
             this.trackBar1.Size = new System.Drawing.Size(56, 253);
@@ -120,7 +215,12 @@
             this.Gradient_Button,
             this.GradientV2_Button,
             this.TextureKist_Button,
-            this.SubShape_Button});
+            this.SubShape_Button,
+            this.FlipBezier_Button,
+            this.GradientAlongThePath_Button,
+            this.Interpolation_Button,
+            this.Complement_Button,
+            this.Exclude_Button});
             this.toolStripDropDownButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripDropDownButton1.Image")));
             this.toolStripDropDownButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripDropDownButton1.Name = "toolStripDropDownButton1";
@@ -129,7 +229,6 @@
             // 
             // Line_Button
             // 
-            this.Line_Button.CheckOnClick = true;
             this.Line_Button.Name = "Line_Button";
             this.Line_Button.Size = new System.Drawing.Size(317, 26);
             this.Line_Button.Text = "Линия";
@@ -137,7 +236,6 @@
             // 
             // Ellips_Button
             // 
-            this.Ellips_Button.CheckOnClick = true;
             this.Ellips_Button.Name = "Ellips_Button";
             this.Ellips_Button.Size = new System.Drawing.Size(317, 26);
             this.Ellips_Button.Text = "Эллипс";
@@ -199,22 +297,6 @@
             this.TextureKist_Button.Text = "Текстурная кисть";
             this.TextureKist_Button.Click += new System.EventHandler(this.TextureKist_Button_Click);
             // 
-            // btn_select_color
-            // 
-            this.btn_select_color.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_select_color.BackColor = System.Drawing.Color.White;
-            this.btn_select_color.Location = new System.Drawing.Point(577, 0);
-            this.btn_select_color.Name = "btn_select_color";
-            this.btn_select_color.Size = new System.Drawing.Size(118, 27);
-            this.btn_select_color.TabIndex = 3;
-            this.btn_select_color.Text = "Цвет";
-            this.btn_select_color.UseVisualStyleBackColor = false;
-            this.btn_select_color.Click += new System.EventHandler(this.btn_select_color_Click);
-            // 
-            // colorDialog1
-            // 
-            this.colorDialog1.Color = System.Drawing.Color.White;
-            // 
             // SubShape_Button
             // 
             this.SubShape_Button.Name = "SubShape_Button";
@@ -222,19 +304,12 @@
             this.SubShape_Button.Text = "Вычитание фигур";
             this.SubShape_Button.Click += new System.EventHandler(this.SubShape_Button_Click);
             // 
-            // openPicture
+            // FlipBezier_Button
             // 
-            this.openPicture.FileName = "openPicture";
-            this.openPicture.Filter = "Image Files(*.BMP;*.JPG;*.GIF)|*.BMP;*.JPG;*.GIF|All files (*.*)|*.*";
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Location = new System.Drawing.Point(4, 4);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(980, 601);
-            this.pictureBox1.TabIndex = 1;
-            this.pictureBox1.TabStop = false;
-            this.pictureBox1.Visible = false;
+            this.FlipBezier_Button.Name = "FlipBezier_Button";
+            this.FlipBezier_Button.Size = new System.Drawing.Size(317, 26);
+            this.FlipBezier_Button.Text = "Поворот кривой Безье";
+            this.FlipBezier_Button.Click += new System.EventHandler(this.FlipBezier_Button_Click);
             // 
             // toolStripDropDownButton2
             // 
@@ -264,32 +339,6 @@
             this.Flip_btn.Text = "Повороты";
             this.Flip_btn.Click += new System.EventHandler(this.Flip_btn_Click);
             // 
-            // flip_90l
-            // 
-            this.flip_90l.Image = ((System.Drawing.Image)(resources.GetObject("flip_90l.Image")));
-            this.flip_90l.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.flip_90l.Location = new System.Drawing.Point(631, 566);
-            this.flip_90l.Name = "flip_90l";
-            this.flip_90l.Size = new System.Drawing.Size(169, 39);
-            this.flip_90l.TabIndex = 5;
-            this.flip_90l.Text = "Поворот на 90°";
-            this.flip_90l.UseVisualStyleBackColor = true;
-            this.flip_90l.Visible = false;
-            this.flip_90l.Click += new System.EventHandler(this.flip_90l_Click);
-            // 
-            // flip_90r
-            // 
-            this.flip_90r.Image = ((System.Drawing.Image)(resources.GetObject("flip_90r.Image")));
-            this.flip_90r.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.flip_90r.Location = new System.Drawing.Point(806, 566);
-            this.flip_90r.Name = "flip_90r";
-            this.flip_90r.Size = new System.Drawing.Size(178, 39);
-            this.flip_90r.TabIndex = 6;
-            this.flip_90r.Text = "Поворот на 90°";
-            this.flip_90r.UseVisualStyleBackColor = true;
-            this.flip_90r.Visible = false;
-            this.flip_90r.Click += new System.EventHandler(this.flip_90r_Click);
-            // 
             // Scale_Button
             // 
             this.Scale_Button.Name = "Scale_Button";
@@ -304,18 +353,25 @@
             this.Inver_Button.Text = "Инвертировать цвета";
             this.Inver_Button.Click += new System.EventHandler(this.Inver_Button_Click);
             // 
-            // trackBar2
+            // btn_select_color
             // 
-            this.trackBar2.Location = new System.Drawing.Point(928, 255);
-            this.trackBar2.Maximum = 50;
-            this.trackBar2.Minimum = 2;
-            this.trackBar2.Name = "trackBar2";
-            this.trackBar2.Orientation = System.Windows.Forms.Orientation.Vertical;
-            this.trackBar2.Size = new System.Drawing.Size(56, 175);
-            this.trackBar2.TabIndex = 7;
-            this.trackBar2.Value = 10;
-            this.trackBar2.Visible = false;
-            this.trackBar2.Scroll += new System.EventHandler(this.trackBar2_Scroll);
+            this.btn_select_color.BackColor = System.Drawing.Color.White;
+            this.btn_select_color.Location = new System.Drawing.Point(568, 0);
+            this.btn_select_color.Name = "btn_select_color";
+            this.btn_select_color.Size = new System.Drawing.Size(118, 27);
+            this.btn_select_color.TabIndex = 3;
+            this.btn_select_color.Text = "Цвет";
+            this.btn_select_color.UseVisualStyleBackColor = false;
+            this.btn_select_color.Click += new System.EventHandler(this.btn_select_color_Click);
+            // 
+            // colorDialog1
+            // 
+            this.colorDialog1.Color = System.Drawing.Color.White;
+            // 
+            // openPicture
+            // 
+            this.openPicture.FileName = "openPicture";
+            this.openPicture.Filter = "Image Files(*.BMP;*.JPG;*.GIF)|*.BMP;*.JPG;*.GIF|All files (*.*)|*.*";
             // 
             // Clear_Button
             // 
@@ -326,6 +382,34 @@
             this.Clear_Button.Text = "Очистить";
             this.Clear_Button.UseVisualStyleBackColor = true;
             this.Clear_Button.Click += new System.EventHandler(this.Clear_Button_Click);
+            // 
+            // GradientAlongThePath_Button
+            // 
+            this.GradientAlongThePath_Button.Name = "GradientAlongThePath_Button";
+            this.GradientAlongThePath_Button.Size = new System.Drawing.Size(317, 26);
+            this.GradientAlongThePath_Button.Text = "Градиент вдоль пути";
+            this.GradientAlongThePath_Button.Click += new System.EventHandler(this.GradientAlongThePath_Button_Click);
+            // 
+            // Interpolation_Button
+            // 
+            this.Interpolation_Button.Name = "Interpolation_Button";
+            this.Interpolation_Button.Size = new System.Drawing.Size(317, 26);
+            this.Interpolation_Button.Text = "Интерполяция цвета";
+            this.Interpolation_Button.Click += new System.EventHandler(this.Interpolation_Button_Click);
+            // 
+            // Complement_Button
+            // 
+            this.Complement_Button.Name = "Complement_Button";
+            this.Complement_Button.Size = new System.Drawing.Size(317, 26);
+            this.Complement_Button.Text = "Комплемент";
+            this.Complement_Button.Click += new System.EventHandler(this.Complement_Button_Click);
+            // 
+            // Exclude_Button
+            // 
+            this.Exclude_Button.Name = "Exclude_Button";
+            this.Exclude_Button.Size = new System.Drawing.Size(317, 26);
+            this.Exclude_Button.Text = "Исключение";
+            this.Exclude_Button.Click += new System.EventHandler(this.Exclude_Button_Click);
             // 
             // MainForm
             // 
@@ -340,11 +424,13 @@
             this.Text = "Лабораторная работа №1";
             this.panel_drawing.ResumeLayout(false);
             this.panel_drawing.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar_Y)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar_X)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();
             this.menu.ResumeLayout(false);
             this.menu.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -380,6 +466,13 @@
         private System.Windows.Forms.ToolStripMenuItem Inver_Button;
         private System.Windows.Forms.TrackBar trackBar2;
         private System.Windows.Forms.Button Clear_Button;
+        private System.Windows.Forms.ToolStripMenuItem FlipBezier_Button;
+        private System.Windows.Forms.TrackBar trackBar_Y;
+        private System.Windows.Forms.TrackBar trackBar_X;
+        private System.Windows.Forms.ToolStripMenuItem GradientAlongThePath_Button;
+        private System.Windows.Forms.ToolStripMenuItem Interpolation_Button;
+        private System.Windows.Forms.ToolStripMenuItem Complement_Button;
+        private System.Windows.Forms.ToolStripMenuItem Exclude_Button;
     }
 }
 
