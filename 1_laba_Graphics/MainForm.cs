@@ -329,7 +329,7 @@ namespace _1_laba_Graphics
 				if (storage.Any())
 					if (storage.Last() is Bezier)
 					{
-						int k = trackBar_X.Value;
+						int k = trackBar_X.Value * 5;
 						Bezier last = storage.Last() as Bezier;
 						if (cX == 0)
 						{
@@ -340,10 +340,10 @@ namespace _1_laba_Graphics
 							cX = 1;
 							cY = 0;
 						}					
-						points.Add(new Point(x1 + k, last.pt1.Y));
+						points.Add(new Point(x1 - k, last.pt1.Y));
 						points.Add(new Point(x2 + k, last.pt2.Y));
 						points.Add(new Point(x3 - k, last.pt3.Y));
-						points.Add(new Point(x4 - k, last.pt4.Y));
+						points.Add(new Point(x4 + k, last.pt4.Y));
 						storage.RemoveAt(storage.Count - 1);
 						storage.Add(new Bezier(points[0], points[1], points[2], points[3], color));
 					}
@@ -358,7 +358,7 @@ namespace _1_laba_Graphics
 				if (storage.Any())
 					if (storage.Last() is Bezier)
 					{
-						int k = trackBar_Y.Value;
+						int k = trackBar_Y.Value *  10;
 						Bezier last = storage.Last() as Bezier;
 						if (cY == 0)
 						{
@@ -369,10 +369,10 @@ namespace _1_laba_Graphics
 							cY = 1;
 							cX = 0;
 						}
-						points.Add(new Point(last.pt1.X, y1 - k));
-						points.Add(new Point(last.pt2.X, y2 - k));
-						points.Add(new Point(last.pt3.X, y3 + k));
-						points.Add(new Point(last.pt4.X, y4 + k));
+						points.Add(new Point(last.pt1.X, y1));
+						points.Add(new Point(last.pt2.X, y2 + k));
+						points.Add(new Point(last.pt3.X, y3 - k));
+						points.Add(new Point(last.pt4.X, y4));
 						storage.RemoveAt(storage.Count - 1);
 						storage.Add(new Bezier(points[0], points[1], points[2], points[3], color));
 					}
